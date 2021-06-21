@@ -16,3 +16,10 @@ const placeholder = function(word) {
     progress.innerText = placeholderLetters.join(" ");
 };
 placeholder(word);
+
+guessButton.addEventListener("click", function(e) {
+    e.preventDefault();
+    const inputValue = letterInput.value;
+    console.log(inputValue);
+    letterInput.value = "";
+});
