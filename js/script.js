@@ -23,3 +23,8 @@ guessButton.addEventListener("click", function(e) {
     console.log(inputValue);
     letterInput.value = "";
 });
+
+const validate = function(inputValue) {
+    const acceptedLetter = /[a-zA-Z]/;
+    if (letterInput === "") {}
+}
