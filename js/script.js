@@ -64,6 +64,45 @@ const makeGuess = function(inputValue) {
     } else {
         guessedLetters.push(inputValue);
         console.log(guessedLetters);
+        updateLetterGuess();
+        updateWordInProgress(guessedLetters);
     }
 
+};
+
+// Function to show guessed letters
+
+const updateLetterGuess = function() {
+    guessLetters.innerHTML = "";
+    for (const letter of guessedLetters) {
+        const li = document.createElement("li");
+        li.innerText = letter;
+        guessLetters.append(li);
+    }
+};
+
+// Function to Update the Word in Progress
+
+const updateWordInProgress = function(guessedLetters) {
+    const wordUpper = word.toUpperCase();
+    const wordArray = wordUpper.split("");
+    const reveal = [];
+    for (const letter of wordArray) {
+        if (guessedLetters.includes(letter)) {
+            reveal.push(letter.toUpperCase());
+        } else {
+            reveal.push("●");
+        }
+    }
+    progress.innerText = reveal.join("");
+    successfulGuess();
+};
+
+// Function to Check If the Player Won
+
+const successfulGuess = function() {
+    if (word.toUpperCase() === progress.innerText) {
+        message.classList.add("win");
+        message.innerHTML = `<p class="highlight">You guessed the correct word! Congrats!</p>`;
+    }
 };
